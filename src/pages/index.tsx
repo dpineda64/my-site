@@ -8,7 +8,7 @@ import List from '@components/list'
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Hello" />
     <Row>
       <Col>
         <Intro>
