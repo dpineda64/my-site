@@ -31,6 +31,13 @@ module.exports = {
     // },
     `gatsby-plugin-typescript`,
     'gatsby-plugin-emotion',
+    {
+      resolve: 'gatsby-plugin-mixpanel',
+      options: {
+        apiToken: process.env.MIXPANEL_TOKEN,
+        enableOnDevMode: false,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
