@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 
 interface RowProps {
-  direction: 'row' | 'column'
-  lastRight: boolean
+  direction?: 'row' | 'column'
+  lastRight?: boolean
 }
 
 const Row = styled('div')<RowProps>(

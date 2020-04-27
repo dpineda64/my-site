@@ -5,14 +5,22 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react'
+import React, { ReactNode } from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
-import LayoutStyled from './layout.styled'
-import Footer, { FooterColumn } from '@components/footer'
+import { useStaticQuery, graphql, Link } from 'gatsby'
+import LayoutStyled, { LayoutBase, LayoutContent } from './layout.styled'
+import Footer from '@components/footer'
 import { Row, Col } from '@components/grid'
+import SEO from '@components/seo'
+import Intro, { Paragraph, Highlight } from '@components/intro'
+import List from '@components/list'
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+  children: ReactNode
+  path?: string
+}
+
+const Layout = ({ children, path }: LayoutProps) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -23,10 +31,30 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const isInnerPage = path !== '/'
+
   return (
-    <LayoutStyled>
-      <>
-        {children}
+    <LayoutStyled crunch={isInnerPage}>
+      <SEO title="Hello" />
+      <LayoutBase>
+        <Row>
+          <Col>
+            <Intro>
+              <h1> Hello </h1>
+              <Paragraph>
+                I'm <b> Daniel Pineda </b> a <Highlight>Full Stack</Highlight>{' '}
+                Developer with 6+ years of experience from Guatemala
+              </Paragraph>
+              <h1> I do </h1>
+              <List.Ul inline={true} separator="/">
+                <List.Li> React </List.Li>
+                <List.Li> Vue </List.Li>
+                <List.Li> Elixir </List.Li>
+                <List.Li> Node </List.Li>
+              </List.Ul>
+            </Intro>
+          </Col>
+        </Row>
         <Footer>
           <Row direction="row">
             <Col>
@@ -43,15 +71,21 @@ const Layout = ({ children }) => {
                 <b>github.com/dpineda64</b>
               </a>
             </Col>
-            <Col>
+            {/* <Col>
               <h4> Blog </h4>
               <span>
                 <b> SOON </b>
               </span>
             </Col>
+            <Col>
+              <h4> Projects </h4>
+              <Link to="/projects">See</Link>
+            </Col> */}
           </Row>
         </Footer>
-      </>
+      </LayoutBase>
+
+      <LayoutContent active={isInnerPage}>{children}</LayoutContent>
     </LayoutStyled>
   )
 }

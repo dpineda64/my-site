@@ -45,14 +45,24 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     {
-      resolve: 'gatsby-plugin-alias-imports',
+      resolve: 'gatsby-plugin-module-resolver',
       options: {
-        alias: {
-          '@components': path.resolve(__dirname, 'src/components'),
-          '@': path.resolve(__dirname, 'src'),
+        root: './src',
+        aliases: {
+          '@components': './components',
+          '@': './',
         },
-        extensions: ['.ts', 'tsx'],
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-alias-imports',
+    //   options: {
+    //     alias: {
+    //       '@components': path.resolve(__dirname, 'src/components'),
+    //       '@': path.resolve(__dirname, 'src'),
+    //     },
+    //     extensions: ['.ts', 'tsx'],
+    //   },
+    // },
   ],
 };
