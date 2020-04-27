@@ -19,7 +19,7 @@ export const Paragraph = styled('p')({
   },
 })
 
-export const Highlight = styled('div')({
+export const Highlight = styled('span')({
   display: 'inline',
   color: theme.secondary,
 })
