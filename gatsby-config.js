@@ -35,7 +35,10 @@ module.exports = {
       resolve: 'gatsby-plugin-mixpanel',
       options: {
         apiToken: process.env.MIXPANEL_TOKEN,
-        enableOnDevMode: false,
+        enableOnDevMode: true,
+        pageViews: {
+          '/': 'Site Visited',
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
